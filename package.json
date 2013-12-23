@@ -1,0 +1,14 @@
+{
+  "name": "kami-assets",
+  "version": "0.0.0",
+  "description": "Basic asset loader for Kami",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt DesLauriers",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "klasse": "~1.0.4"
+  }
+}
