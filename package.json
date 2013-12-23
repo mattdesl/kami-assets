@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "kami": "git://github.com/mattdesl/kami",
-    "klasse": "~1.0.4"
+    "klasse": "~1.0.4",
+    "assetloader": "git://github.com/mattdesl/assetloader"
   }
 }
