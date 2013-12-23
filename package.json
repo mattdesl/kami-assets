@@ -10,5 +10,9 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "klasse": "~1.0.4"
+  },
+  "dependencies": {
+    "kami": "git://github.com/mattdesl/kami",
+    "klasse": "~1.0.4"
   }
 }
