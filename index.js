@@ -15,30 +15,9 @@ function TextureLoader(name, path, texture, genMipmaps) {
 
         value: texture,
 
-        load: function(finished) {
-            var img = new Image(); 
-
-            img.onload = function() {
-                img.onerror = img.onabort = null; //clear other listeners
-                texture.uploadImage(img, undefined, undefined, genMipmaps);
-                finished();
-            };
-            img.onerror = function() {
-                img.onload = img.onabort = null;
-                console.warn("Error loading image: "+path);
-                //We use null data to avoid WebGL errors
-                texture.uploadData(1, 1, undefined, undefined, undefined, genMipmaps); 
-                finished(false);
-            };
-            img.onabort = function() {
-                img.onload = img.onerror = null;
-                console.warn("Aborted image: "+path);
-                //We use null data to avoid WebGL errors
-                texture.uploadData(1, 1, undefined, undefined, undefined, genMipmaps); 
-                finished(false);
-            };
-            //setup source
-            img.src = path;
+        load: function(onComplete, onError) {
+            //Texture has a handy function for this sort of thing...
+            texture.setup(path, onComplete, onError, genMipmaps);
         }
     }
 }
