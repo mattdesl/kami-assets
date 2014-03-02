@@ -33,7 +33,7 @@ var AssetLoader = new Class({
     initialize: function(context) {
         LoaderBase.call(this);
 
-        if (!context)
+        if (!context || typeof context !== "object")
             throw "Kami AssetLoader must be passed with a valid WebGLContext";
 
         this.registerLoader(TextureLoader);

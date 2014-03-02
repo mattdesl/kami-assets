@@ -15,5 +15,12 @@
     "kami": "~0.2.0",
     "klasse": "~1.0.4",
     "assetloader": "git://github.com/mattdesl/assetloader"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattdesl/kami-assets"
+  },
+  "bugs": {
+    "url": "https://github.com/mattdesl/kami-assets/issues"
   }
 }
