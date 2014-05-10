@@ -1,6 +1,6 @@
 {
   "name": "kami-assets",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Basic asset loader for Kami",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,7 @@
   },
   "author": "Matt DesLauriers",
   "license": "BSD-2-Clause",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
     "klasse": "~1.0.8",
     "kami": "~0.5.0",
