@@ -9,7 +9,6 @@
   "author": "Matt DesLauriers",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "klasse": "~1.0.4"
   },
   "dependencies": {
     "klasse": "~1.0.8",
