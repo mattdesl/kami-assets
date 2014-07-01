@@ -1,10 +1,14 @@
 # kami-assets
 
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+
 This overrides [assetloader](https://github.com/mattdesl/assetloader) to provide some [kami](https://github.com/mattdesl/kami)-specific features. The return type for images are [kami-texture](https://github.com/mattdesl/kami-texture) objects.
 
 This asset loader expects a GL context (or a kami-context). If the provided context is a kami-context with `handleContextLoss`, assets will be invalidated upon context restore, which will froce a re-run of the preloader. 
 
-# example
+# usage
+
+[![NPM](https://nodei.co/npm/kami-assets.png)](https://nodei.co/npm/kami-assets/)
 
 Typical usage with a render loop could look like this:
 
@@ -41,3 +45,8 @@ function update() {
 
 requestAnimationFrame(update);
 ```
+
+
+## License
+
+MIT.
