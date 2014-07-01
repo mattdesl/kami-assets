@@ -7,7 +7,7 @@ Unlike the regular assetloader, this requires you pass a `WebGLContext` (from Ka
 # example
 
 ```js
-var AssetLoader = require("assetloader");
+var AssetLoader = require("kami-assets");
 
 var WebGLContext = require('kami').WebGLContext;
 

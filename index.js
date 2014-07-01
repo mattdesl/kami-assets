@@ -3,26 +3,32 @@
 var LoaderBase = require('assetloader');
 var Class = require('klasse');
 var TextureLoader = require('./ext/TextureLoader');
+var BaseObject = require('kami-util').BaseObject;
 
 var AssetLoader = new Class({
 
     Extends: LoaderBase,
 
     initialize: function(context) {
+        if (!(this instanceof AssetLoader))
+            return new AssetLoader(context);
+        //setup assetloader defaults
         LoaderBase.call(this);
 
-        if (!context || typeof context !== "object")
-            throw "Kami AssetLoader must be passed with a valid WebGLContext";
+        //setup GL context
+        BaseObject.call(this, context);
 
         this.registerLoader(TextureLoader);
         
-        this.context = context;
         this.__invalidateFunc = this.invalidate.bind(this);
-        this.context.restored.add( this.__invalidateFunc );
+        
+        if (this.context.restored && typeof this.context.restored.add === "function")
+            this.context.restored.add( this.__invalidateFunc );
     },
 
     destroy: function() {
-        this.context.restored.remove(this.__invalidateFunc);
+        if (this.context.restored && typeof this.context.restored.remove === "function")
+            this.context.restored.remove(this.__invalidateFunc);
     }
 });
 
