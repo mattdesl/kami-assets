@@ -21,7 +21,7 @@ test('testing kami asset loader', function(t) {
 
     assets.loadFinished.add(function() {
         t.ok(true, 'loading finished');
-    })
+    });
 
     t.equal( typeof tex.bind, 'function', 'returned object is a Texture' );
 

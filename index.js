@@ -20,14 +20,19 @@ var AssetLoader = new Class({
 
         this.registerLoader(TextureLoader);
         
-        this.__invalidateFunc = this.invalidate.bind(this);
-        
-        if (this.context.restored && typeof this.context.restored.add === "function")
+        this.__invalidateFunc = function() {
+            if (this.context.handleContextLoss)
+                this.invalidate();
+        }.bind(this);
+
+        if (this.context.restored 
+                && typeof this.context.restored.add === "function")
             this.context.restored.add( this.__invalidateFunc );
     },
 
     destroy: function() {
-        if (this.context.restored && typeof this.context.restored.remove === "function")
+        if (this.context.restored 
+                && typeof this.context.restored.remove === "function")
             this.context.restored.remove(this.__invalidateFunc);
     }
 });

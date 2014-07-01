@@ -13,7 +13,8 @@
     "webgl-context": "^1.2.1"
   },
   "dependencies": {
-    "assetloader": "~0.1.0",
+    "assetloader": "^0.1.2",
+    "kami-texture": "^1.0.14",
     "kami-util": "^1.1.2",
     "klasse": "~1.0.8"
   },

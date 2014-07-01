@@ -1,23 +1,26 @@
 # kami-assets
 
-This overrides [assetloader](https://github.com/mattdesl/assetloader) to provide some [kami](https://github.com/mattdesl/kami)-specific features. The return type for images are `Texture` objects.
+This overrides [assetloader](https://github.com/mattdesl/assetloader) to provide some [kami](https://github.com/mattdesl/kami)-specific features. The return type for images are [kami-texture](https://github.com/mattdesl/kami-texture) objects.
 
-Unlike the regular assetloader, this requires you pass a `WebGLContext` (from Kami) to the constructor, in order to manage the textures that are loaded. The AssetLoader will also be re-run on context loss. 
+This asset loader expects a GL context (or a kami-context). If the provided context is a kami-context with `handleContextLoss`, assets will be invalidated upon context restore, which will froce a re-run of the preloader. 
 
 # example
 
+Typical usage with a render loop could look like this:
+
 ```js
-var AssetLoader = require("kami-assets");
+//create a canvas..
+var gl = require('kami-context')({
+	width: 250,
+	height: 250
+});
 
-var WebGLContext = require('kami').WebGLContext;
+document.body.appendChild(gl.canvas);
 
-//setup our WebGL context
-var context = new WebGLContext(300, 200);
+//create a new asset loader
+var assets = require('kami-assets')(gl);
 
-//create a new asset loader __with the context__
-var assets = new AssetLoader(context);
-
-//the returned objects are Textures
+//the returned objects are kami-textures
 var tex1 = assets.add("img/scene.png");
 var tex2 = assets.add("img/grass.png");
 
@@ -27,10 +30,12 @@ tex1.setFilter(Texture.Filter.LINEAR);
 function update() {
     requestAnimationFrame(update);
 
+    //tick forward to the next asset in the preloader
     if (assets.update()) {
-        //Show your game...
+    	//returns true when all assets are loaded,
+        //render your game..
     } else {
-        //Game is loading.. show a preloader
+        //game is loading.. show a preloader
     }
 }
 

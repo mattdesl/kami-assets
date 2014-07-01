@@ -1,4 +1,4 @@
-var Texture = require('kami').Texture;
+var Texture = require('kami-texture');
 
 
 //this is a kami-specific loader for a Texture object
@@ -16,7 +16,7 @@ function TextureLoader(name, path, texture, genMipmaps) {
             //Texture has a handy function for this sort of thing...
             texture.setup(path, onComplete, onError, genMipmaps);
         }
-    }
+    };
 }
 
 //Setup loader parameters
